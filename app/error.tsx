@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { HardNavigationLink } from "@/app/_components/hard-navigation-link";
 
 export default function ErrorPage({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
@@ -11,7 +11,7 @@ export default function ErrorPage({ reset }: { error: Error & { digest?: string 
         <p>Vui lòng thử lại. Nếu lỗi tiếp tục, bạn có thể quay về trang chủ hoặc liên hệ SELVA qua email.</p>
         <div className="hero-actions">
           <button className="button" onClick={reset}>Thử lại</button>
-          <Link className="button button-outline" href="/">Về trang chủ</Link>
+          <HardNavigationLink className="button button-outline" href="/">Về trang chủ</HardNavigationLink>
         </div>
       </div>
     </main>

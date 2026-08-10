@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ContactForm } from "@/app/_components/contact-form";
+import { HardNavigationLink } from "@/app/_components/hard-navigation-link";
 import { ArrowLink, Eyebrow, PageShell } from "@/app/_components/site-shell";
 import { processSteps, technologyCapabilities, type Service } from "@/content/site";
 import type { PublicContent } from "@/lib/content-store";
@@ -18,9 +18,9 @@ function CtaSection() {
             Hãy chia sẻ mục tiêu và bối cảnh hiện tại. SELVA sẽ cùng bạn làm rõ
             phạm vi trước khi đề xuất giải pháp.
           </p>
-          <Link className="button button-light" href="/contact">
+          <HardNavigationLink className="button button-light" href="/contact">
             Trao đổi yêu cầu
-          </Link>
+          </HardNavigationLink>
         </div>
       </div>
     </section>
@@ -82,12 +82,12 @@ export function HomePage({ content }: { content: PublicContent }) {
             <h1>{settings.heroTitle}</h1>
             <p>{settings.heroCopy}</p>
             <div className="hero-actions">
-              <Link className="button" href="/contact">
+              <HardNavigationLink className="button" href="/contact">
                 Trao đổi dự án
-              </Link>
-              <Link className="text-button" href="/services">
+              </HardNavigationLink>
+              <HardNavigationLink className="text-button" href="/services">
                 Xem năng lực <span aria-hidden="true">→</span>
-              </Link>
+              </HardNavigationLink>
             </div>
             <ul className="trust-list" aria-label="Giá trị thương hiệu">
               <li>Trust</li>
@@ -218,9 +218,9 @@ export function HomePage({ content }: { content: PublicContent }) {
                   lúc này, bạn có thể trao đổi trực tiếp để đánh giá phạm vi năng lực phù hợp.
                 </p>
               </div>
-              <Link className="button button-outline" href="/contact">
+              <HardNavigationLink className="button button-outline" href="/contact">
                 Trao đổi nhu cầu
-              </Link>
+              </HardNavigationLink>
             </div>
           )}
         </div>
@@ -339,9 +339,9 @@ export function ServicePage({ content, service }: { content: PublicContent; serv
               Chuẩn bị mục tiêu, nhóm người dùng, hiện trạng và mốc thời gian dự
               kiến. SELVA sẽ cùng bạn xác định phần cần khảo sát thêm trước khi báo giá.
             </p>
-            <Link className="button" href={`/contact?service=${service.slug}`}>
+            <HardNavigationLink className="button" href={`/contact?service=${service.slug}`}>
               Trao đổi yêu cầu
-            </Link>
+            </HardNavigationLink>
           </article>
         </div>
       </section>
@@ -369,7 +369,7 @@ export function ProjectsPage({ content }: { content: PublicContent }) {
                   án, bài toán, giải pháp và kết quả khi đã nhận đủ chấp thuận công bố.
                 </p>
               </div>
-              <Link className="button button-outline" href="/contact">Trao đổi trực tiếp</Link>
+              <HardNavigationLink className="button button-outline" href="/contact">Trao đổi trực tiếp</HardNavigationLink>
             </div>
           ) : (
             <div className="project-grid">

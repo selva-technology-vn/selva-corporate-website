@@ -103,6 +103,25 @@ test("contact endpoint rejects invalid and cross-origin requests", async () => {
   assert.equal(bot.status, 200);
 });
 
+test("public navigation uses resilient document links", async () => {
+  const publicNavigationFiles = [
+    "app/_components/site-shell.tsx",
+    "app/_components/public-pages.tsx",
+    "app/_components/contact-form.tsx",
+  ];
+
+  for (const relative of publicNavigationFiles) {
+    const source = await readFile(new URL(`../${relative}`, import.meta.url), "utf8");
+    assert.doesNotMatch(source, /from ["']next\/link["']/);
+  }
+
+  const hardLink = await readFile(
+    new URL("../app/_components/hard-navigation-link.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(hardLink, /<a href=\{href\}/);
+});
+
 test("repository contains no committed environment file or obvious secret", async () => {
   const rootFiles = await readdir(new URL("../", import.meta.url));
   assert.equal(rootFiles.some((file) => /^\.env(?!\.example$)/.test(file)), false);

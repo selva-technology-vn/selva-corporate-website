@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import Link from "next/link";
+import { HardNavigationLink } from "@/app/_components/hard-navigation-link";
 
 type FormState =
   | { status: "idle" }
@@ -119,7 +119,7 @@ export function ContactForm({ services }: { services: { slug: string; title: str
         <input name="consent" type="checkbox" value="yes" required />
         <span>
           Tôi đồng ý để SELVA xử lý thông tin trên nhằm mục đích phản hồi yêu
-          cầu. Xem <Link href="/privacy">chính sách bảo mật</Link>.
+          cầu. Xem <HardNavigationLink href="/privacy">chính sách bảo mật</HardNavigationLink>.
         </span>
       </label>
 

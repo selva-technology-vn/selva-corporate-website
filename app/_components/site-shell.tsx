@@ -1,12 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
+import { HardNavigationLink } from "@/app/_components/hard-navigation-link";
 import { navItems, type SiteSettings } from "@/content/site";
 
 export function SiteHeader({ settings }: { settings: SiteSettings }) {
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <Link className="brand-link" href="/" aria-label="SELVA - Trang chủ">
+        <HardNavigationLink className="brand-link" href="/" aria-label="SELVA - Trang chủ">
           <Image
             src={settings.logoUrl}
             width={600}
@@ -14,26 +14,26 @@ export function SiteHeader({ settings }: { settings: SiteSettings }) {
             priority
             alt="SELVA Technology Company"
           />
-        </Link>
+        </HardNavigationLink>
 
         <nav className="desktop-nav" aria-label="Điều hướng chính">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href}>
+            <HardNavigationLink key={item.href} href={item.href}>
               {item.label}
-            </Link>
+            </HardNavigationLink>
           ))}
-          <Link className="button button-small" href="/contact">
+          <HardNavigationLink className="button button-small" href="/contact">
             Trao đổi dự án
-          </Link>
+          </HardNavigationLink>
         </nav>
 
         <details className="mobile-menu">
           <summary aria-label="Mở menu điều hướng">Menu</summary>
           <nav aria-label="Điều hướng trên thiết bị di động">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
+              <HardNavigationLink key={item.href} href={item.href}>
                 {item.label}
-              </Link>
+              </HardNavigationLink>
             ))}
           </nav>
         </details>
@@ -64,11 +64,11 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
           <ul>
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
+                <HardNavigationLink href={item.href}>{item.label}</HardNavigationLink>
               </li>
             ))}
             <li>
-              <Link href="/privacy">Chính sách bảo mật</Link>
+              <HardNavigationLink href="/privacy">Chính sách bảo mật</HardNavigationLink>
             </li>
           </ul>
         </div>
@@ -137,8 +137,8 @@ export function Eyebrow({ children }: { children: React.ReactNode }) {
 
 export function ArrowLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link className="arrow-link" href={href}>
+    <HardNavigationLink className="arrow-link" href={href}>
       {children} <span aria-hidden="true">↗</span>
-    </Link>
+    </HardNavigationLink>
   );
 }
