@@ -126,5 +126,6 @@ test("Cloudflare production profile has D1 and no metered R2 binding", async () 
   assert.equal(config.vars.PUBLIC_INDEXING, "false");
   assert.equal(config.d1_databases?.[0]?.binding, "DB");
   assert.equal(config.d1_databases?.[0]?.database_name, "selva-website-production");
+  assert.deepEqual(config.rules?.[0]?.globs, ["**/*.js", "**/*.mjs"]);
   assert.equal("r2_buckets" in config, false);
 });
