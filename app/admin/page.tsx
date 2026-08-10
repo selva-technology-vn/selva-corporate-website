@@ -1,12 +1,15 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { AdminPanel } from "@/app/admin/admin-panel";
 import { requireChatGPTUser } from "@/app/chatgpt-auth";
 import { getAdminContent } from "@/lib/content-store";
-import { getAdminEmails } from "@/lib/runtime";
+import { bindings, getAdminEmails } from "@/lib/runtime";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
+  if (bindings().ADMIN_ENABLED === "false") notFound();
+
   const user = await requireChatGPTUser("/admin");
   const allowlist = getAdminEmails();
   const isAuthorized = allowlist.includes(user.email.toLowerCase());

@@ -107,9 +107,6 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
           © {new Date().getFullYear()} SELVA. Thông tin pháp lý sẽ được cập nhật
           sau khi hoàn tất đăng ký doanh nghiệp.
         </p>
-        <Link href="/admin" rel="nofollow">
-          Quản trị nội dung
-        </Link>
       </div>
     </footer>
   );

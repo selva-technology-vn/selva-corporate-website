@@ -7,7 +7,8 @@ Website doanh nghiệp Vietnamese-first cho SELVA, phát triển theo bản yêu
 - 12 route public theo sitemap Phase 1.
 - 5 nhóm dịch vụ, nội dung theo scope đã xác nhận.
 - CMS cho hero, contact, pháp lý, SEO, social, logo/OG, services và projects.
-- D1 cho nội dung/inquiry/rate limit; R2 cho ảnh project.
+- D1 cho nội dung/inquiry/rate limit. R2 chỉ dùng trên Sites private; profile
+  Cloudflare public không đăng ký R2 để loại bỏ rủi ro phát sinh phí.
 - Form liên hệ có validation hai lớp, honeypot, rate limit và lưu dự phòng.
 - Email qua Resend ở server; không có API key trong frontend/repository.
 - Auth quản trị bằng Sign in with ChatGPT và allowlist email phía server.
@@ -58,6 +59,10 @@ Logical bindings nằm trong `.openai/hosting.json`:
 
 - `DB`: Cloudflare D1.
 - `MEDIA`: Cloudflare R2.
+
+`wrangler.production.jsonc` là profile Cloudflare public không có R2. Profile
+này khóa `/admin`, phục vụ ảnh trực tiếp từ repository và vẫn lưu form vào D1.
+Quản trị Sign in with ChatGPT tiếp tục chạy riêng trên bản Sites private.
 
 Migration được tạo bằng `npm run db:generate` và được build vào `dist/.openai/drizzle/`. Không sửa migration đã deploy; thay schema rồi tạo migration mới.
 

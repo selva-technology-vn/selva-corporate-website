@@ -47,6 +47,7 @@ type RuntimeBindings = {
   CONTACT_TO_EMAIL?: string;
   CONTACT_FROM_EMAIL?: string;
   PUBLIC_INDEXING?: string;
+  ADMIN_ENABLED?: string;
 };
 
 export function bindings(): RuntimeBindings {

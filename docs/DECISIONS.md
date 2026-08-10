@@ -56,3 +56,9 @@ Logo raster được trích trực tiếp từ brand board trong tài liệu, kh
 - Email end-to-end cần Resend key và sender domain đã verify.
 - Admin end-to-end cần deployment có Sites auth headers.
 - Visual browser QA tự động chưa thực hiện được trong phiên này vì không có browser binding; build/HTML/API/responsive CSS đã được kiểm tra tự động và cần founder review trên staging ở Gate 4.
+
+## D-013 - Cloudflare production không đăng ký R2
+
+Để bảo đảm không có rủi ro phát sinh phí ở giai đoạn đầu, production Cloudflare
+dùng Workers Free + D1 Free, ảnh được quản lý trong repository và upload/CMS bị
+khóa trên domain public. Sites private vẫn giữ CMS và R2 cho founder review.

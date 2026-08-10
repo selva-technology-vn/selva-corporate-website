@@ -24,6 +24,21 @@ Free tier không phải SLA và giới hạn có thể thay đổi; kiểm tra l
 
 Staging URL chỉ để review; không dùng làm website công ty chính thức và không gửi Search Console.
 
+## A2. Cloudflare public không rủi ro tính phí
+
+Profile `wrangler.production.jsonc` dùng Workers Free + D1 Free và không khai
+báo R2. Ảnh nằm trong repository, `/admin` bị khóa trên production, còn CMS
+Sign in with ChatGPT tiếp tục ở Sites private. Khi Free plan chạm giới hạn,
+Workers/D1 trả lỗi thay vì tự nâng sang gói trả phí.
+
+```bash
+npm run test:build
+npm run db:migrate:cloudflare
+npm run deploy:cloudflare
+```
+
+Giữ `PUBLIC_INDEXING=false` tới khi founder duyệt nội dung pháp lý và domain.
+
 ## B. Chuẩn bị production owner
 
 Founder/SELVA phải là owner của:

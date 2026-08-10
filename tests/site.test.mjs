@@ -117,3 +117,14 @@ test("repository contains no committed environment file or obvious secret", asyn
     assert.doesNotMatch(source, /(?:sk|re|pk)_(?:live|test)_[A-Za-z0-9]{16,}/);
   }
 });
+
+test("Cloudflare production profile has D1 and no metered R2 binding", async () => {
+  const raw = await readFile(new URL("../wrangler.production.jsonc", import.meta.url), "utf8");
+  const config = JSON.parse(raw);
+
+  assert.equal(config.vars.ADMIN_ENABLED, "false");
+  assert.equal(config.vars.PUBLIC_INDEXING, "false");
+  assert.equal(config.d1_databases?.[0]?.binding, "DB");
+  assert.equal(config.d1_databases?.[0]?.database_name, "selva-website-production");
+  assert.equal("r2_buckets" in config, false);
+});
